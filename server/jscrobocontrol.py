@@ -1,6 +1,12 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 import pygame
 import serial
+import argparse
 
+argparser = argparse.ArgumentParser(description="Ein Werkzeug zur Kontrolle eines Roboters über Tastatureingaben.")
+argparser.add_argument("serial", help="Der pfad zur seriellen Konsole.", default="/dev/ttyUSB0",  nargs='?')
+args = argparser.parse_args()
 pygame.init()
 pygame.display.set_mode()
 screen = pygame.display.get_surface()
@@ -11,10 +17,12 @@ label = myfont.render("Benutze W - A - S - D und Leertaste um deinen Roboter zu 
 
 screen.blit(label, (screen.get_width()/2-label.get_width()/2, screen.get_height()/2-label.get_height()/2))
 pygame.display.update()
-with serial.Serial('/dev/ttyUSB0', 115200, timeout=1) as ser:
+with serial.Serial(args.serial, 115200, timeout=1) as ser:
 	while 1:
     		for event in pygame.event.get():
         		if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_ESCAPE:
+					pygame.quit()
             			if event.key == pygame.K_w:
 					ser.write('w')
             			if event.key == pygame.K_a:
