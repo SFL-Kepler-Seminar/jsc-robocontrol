@@ -2,7 +2,7 @@
 
 JSCRoboControl myControl(7, 6, aPressed, wPressed, sPressed, dPressed, spacePressed,
   aRelease, wRelease, sRelease, dRelease, spaceRelease
-);
+); // PINs 7 und 6 sind RX und TX
 
 
 void setup() { // Alle benutzten Pins einrichten
