@@ -3,8 +3,14 @@ import serial
 
 pygame.init()
 pygame.display.set_mode()
+screen = pygame.display.get_surface()
 pygame.key.set_repeat(1000, 1000)
+myfont = pygame.font.SysFont("monospace", 15)
 
+label = myfont.render("Benutze W - A - S - D und Leertaste um deinen Roboter zu steuern.", 1, (255,255,255))
+
+screen.blit(label, (screen.get_width()/2-label.get_width()/2, screen.get_height()/2-label.get_height()/2))
+pygame.display.update()
 with serial.Serial('/dev/ttyUSB0', 115200, timeout=1) as ser:
 	while 1:
     		for event in pygame.event.get():
