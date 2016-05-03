@@ -1,10 +1,5 @@
 #include <JSCRoboControl.h>
 
-JSCRoboControl myControl(7, 6, aPressed, wPressed, sPressed, dPressed, spacePressed,
-  aRelease, wRelease, sRelease, dRelease, spaceRelease
-); // PINs 7 und 6 sind RX und TX
-
-
 void setup() { // Alle benutzten Pins einrichten
   pinMode(12, OUTPUT);
   pinMode(11, OUTPUT);
@@ -13,14 +8,10 @@ void setup() { // Alle benutzten Pins einrichten
   pinMode(8, OUTPUT);
 }
 
-void loop() {
-  myControl.poll();
-}
-
 void wPressed() { // W ist gedrueckt.
     digitalWrite(11, HIGH);
 }
-void sPressed() { // A ist gedrueckt.
+void aPressed() { // A ist gedrueckt.
     digitalWrite(10, HIGH);
 }
 void sPressed() { // S ist gedrueckt.
@@ -49,4 +40,10 @@ void spaceRelease() {  // Leertaste ist losgelassen (z.b. Anhalten)
 }
 
 
+JSCRoboControl myControl(7, 6, aPressed, wPressed, sPressed, dPressed, spacePressed,
+  aRelease, wRelease, sRelease, dRelease, spaceRelease
+);
 
+void loop() {
+  myControl.poll();
+}
