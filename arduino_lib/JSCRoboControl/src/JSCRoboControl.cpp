@@ -5,10 +5,11 @@ JSCRoboControl::JSCRoboControl(int rx, int tx, void (*a)(), void (*w)(), void (*
         aPressed(a), sPressed(s), wPressed(w), dPressed(d), spacePressed(space), bt(rx, tx),
         aRelease(ar), sRelease(sr), wRelease(wr), dRelease(dr), spaceRelease(spacer){
       bt.begin(115200);
-      wState = aState = sState = dState = spaceState = 0;
+      wState = aState = sState = dState = spaceState = lastAction = 0;
 }
 void JSCRoboControl::poll() {
 if(bt.available()) {
+    lastAction = millis();
     switch(bt.read())  {
       case 'w':
         wState = 1;
@@ -41,6 +42,8 @@ if(bt.available()) {
         spaceState = 0;
         break;
     }
+  } else if(millis() - lastAction > 500) {
+	wState = aState = sState = dState = spaceState = 0;
   }
   if(wState)
     wPressed();

@@ -10,7 +10,7 @@ args = argparser.parse_args()
 pygame.init()
 pygame.display.set_mode()
 screen = pygame.display.get_surface()
-pygame.key.set_repeat(1000, 1000)
+pygame.key.set_repeat(200, 200)
 myfont = pygame.font.SysFont("monospace", 22)
 
 label = myfont.render("Benutze W - A - S - D und Leertaste um deinen Roboter zu steuern.", 1, (255,255,255))

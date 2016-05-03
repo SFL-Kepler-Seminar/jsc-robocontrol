@@ -24,6 +24,7 @@ class JSCRoboControl {
     int sState;
     int dState;
     int spaceState;
+    unsigned long lastAction;
     SoftwareSerial bt;
 };
 #endif
