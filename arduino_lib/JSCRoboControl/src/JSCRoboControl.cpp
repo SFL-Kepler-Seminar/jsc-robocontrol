@@ -4,7 +4,7 @@
 JSCRoboControl::JSCRoboControl(int rx, int tx, void (*a)(), void (*w)(), void (*s)(), void (*d)(), void (*space)(), void (*ar)(), void (*wr)(), void (*sr)(), void (*dr)(), void (*spacer)()):
         aPressed(a), sPressed(s), wPressed(w), dPressed(d), spacePressed(space), bt(rx, tx),
         aRelease(ar), sRelease(sr), wRelease(wr), dRelease(dr), spaceRelease(spacer){
-      bt.begin(115200);
+      bt.begin(9600);
       wState = aState = sState = dState = spaceState = lastAction = 0;
 }
 void JSCRoboControl::poll() {
