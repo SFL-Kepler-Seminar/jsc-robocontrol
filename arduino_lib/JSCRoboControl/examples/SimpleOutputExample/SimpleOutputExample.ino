@@ -1,4 +1,5 @@
 #include <JSCRoboControl.h>
+#include <SoftwareSerial.h>
 
 void setup() { // Alle benutzten Pins einrichten
   pinMode(12, OUTPUT);
