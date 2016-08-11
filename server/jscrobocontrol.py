@@ -17,7 +17,7 @@ label = myfont.render("Benutze W - A - S - D und Leertaste um deinen Roboter zu 
 
 screen.blit(label, (screen.get_width()/2-label.get_width()/2, screen.get_height()/2-label.get_height()/2))
 pygame.display.update()
-with serial.Serial(args.serial, 115200, timeout=1) as ser:
+with serial.Serial(args.serial, 9600, timeout=1) as ser:
 	while 1:
     		for event in pygame.event.get():
         		if event.type == pygame.KEYDOWN:
